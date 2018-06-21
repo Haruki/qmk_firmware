@@ -1,5 +1,6 @@
 # auto for anything unspecified
 * text=auto
+* text eol=lf
 
 # sources
 *.c text
