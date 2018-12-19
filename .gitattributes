@@ -93,3 +93,4 @@ GRAPHICS
 # hex files
 *.hex binary
 *.eep binary
+*.exe binary
