@@ -137,6 +137,25 @@ void click(uint16_t freq, uint16_t duration);
         }
 
     #endif // !LAYOUT_tkl_iso
-#endif //Rev
+    #ifndef LAYOUT_iso
+        #define LAYOUT_iso( \
+            k71,      k11, k12, k13, k14,      k15, k16, k17, k18,      k19, k1a, k1b, k1c,   k1e, k1f, k1g, \
+            k72, k73, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b,           k2c,   k2e, k2f, k2g, \
+            k74,  k31, k32, k33, k34, k35, k36, k37, k38, k39, k3a, k3b, k3c,          k3d,   k3e, k3f, k3g, \
+            k61,   k41, k42, k43, k44, k45, k46, k47, k48, k49, k4a, k4b,              k4c, \
+            k62,  k51, k52, k53, k54, k55, k56, k57, k58, k59, k5a, k5b,               k5c,        k5f, \
+            k63,   k64,   k65,       k66,          k67,      k68,         k6a,   k6b,   k6c,   k6d,   k6e, k6f, k6g  \
+        ) \
+        { \
+            {k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, k1c, ___, k1e, k1f, k1g}, \
+            {k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, k2c, ___, k2e, k2f, k2g}, \
+            {k31, k32, k33, k34, k35, k36, k37, k38, k39, k3a, k3b, k3c, k3d, k3e, k3f, k3g}, \
+            {k41, k42, k43, k44, k45, k46, k47, k48, k49, k4a, k4b, k4c, ___, ___, ___, ___}, \
+            {k51, k52, k53, k54, k55, k56, k57, k58, k59, k5a, k5b, k5c, ___, ___, k5f, ___}, \
+            {k61, k62, k63, k64, k65, k66, k67, k68, ___, k6a, k6b, k6c, k6d, k6e, k6f, k6g}, \
+            {k71, k72, k73, k74, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___}, \
+        }
 
+    #endif // !LAYOUT_tkl_isoendif //Rev
+  #endif
 #endif //LFK87_H
