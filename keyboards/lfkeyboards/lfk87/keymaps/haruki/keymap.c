@@ -18,6 +18,7 @@ enum keymap_layout {
 #define LAYER1     5
 #define LAYER2     6
 #define LAYER3     7
+#define GAMING     8
 
 //Tap Dance Declarations
 enum {
@@ -121,43 +122,13 @@ const Layer_Info layer_info[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [VANILLA] = LAYOUT_iso(
-    /* Keymap VANILLA: (Base Layer) Default Layer
-    * ,-----------------------------------------------------------------------------.
-    * |Esc  |f1| f2| f3| f4|  | f5| f6| f7| f8|   | f9|f10|f11|f12|  |Prnt|ScLk|Paus|
-    * |-----------------------------------------------------------|  |--------------|
-    * | ~ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |  0| - | = |Backsp |  | Ins|Home|PgUp|
-    * |-----------------------------------------------------------|  |--------------|
-    * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  Ret|  | Del| End|PgDn|
-    * |--------------------------------------------------------.  |  `--------------'
-    * |CAPS   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|  # |  |
-    * |-----------------------------------------------------------|        ,----.
-    * |Shft| \ |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |        | Up |
-    * |-----------------------------------------------------------|   ,-------------.
-    * |Ctrl|Gui |Alt |      Space            |ALT |GUI | Func|CTRL|   |Lft| Dn |Rig |
-    * `-----------------------------------------------------------'   `-------------'
-    */
     KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_PSCR, KC_LSCR, KC_PAUS, \
     KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_INS, KC_HOME, KC_PGUP, \
     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, CTL_T(KC_ENT), KC_DELETE, KC_END, KC_PGDN, \
     TD(TD_CAPS), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, LT(LAYER2,KC_SCLN),TD(TD_END), KC_NUHS,  \
     KC_LSPO, KC_NUBS, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC, KC_UP, \
-    KC_LCTL, KC_LGUI, KC_LALT, LT(LAYER3,KC_INS), KC_DEL, KC_SPC, KC_RALT, KC_RGUI, MO(FUNC), KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
+    KC_LCTL, KC_LGUI, KC_LALT, LT(LAYER3,KC_INS), KC_DEL, KC_SPC, KC_RALT, TG(GAMING), MO(FUNC), KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
 
-  /* Keymap FUNCTION: Function Layer
-   * ,-------------------------------------------------------------.  ,--------------.
-   * |     |f1| f2| f3| f4|  | f5| f6| f7| f8|   | f9|f10|f11|f12  |  |Prnt|ScLk|Paus|
-   * |-------------------------------------------------------------|  |--------------|
-   * |   |F1 |F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|Delete   |  |    |    |    |
-   * |-------------------------------------------------------------|  |--------------|
-   * |Tab  |   |PgU|   |   |   |   |   | Up|   |   |   |   |   |   |  |    |    |    |
-   * |---------------------------------------------------------.   |  `--------------'
-   * |Control|Hme|PgD|End|   |   |   |Lft|Dwn|Rgt|   |   |     |   |
-   * |-------------------------------------------------------------|       ,----.
-   * |Shift|  |   |Del|   |   |   |   |Mute|V- |V+ |  |TG(SETTINGS)|       | Up |
-   * |-------------------------------------------------------------'   ,-------------.
-   * |Func|Win |Alt |         PgD             |ALT |GUI | Func|CTRL|   |Lft| Dn |Rig |
-   * `-------------------------------------------------------------'   `-------------'
-   */
 [FUNC] = LAYOUT_iso(
    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,                        KC_PSCR, KC_SLCK, KC_PAUS, \
    _____,  _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,               KC_DEL,  _____, _____, _____, \
@@ -166,21 +137,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _____,KC_NO, KC_NO,  KC_DEL,  KC_NO,  KC_NO, KC_NO, KC_NO, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO,   TG(SETTINGS),                 _____, \
    _____,  _____, _____,    _____,              KC_PGDN,   _____,                        _____, _____, _____,  _____,            _____,  _____, _____),
 
-   /* Keymap SETTINGS: Settings Layer
-    * ,-----------------------------------------------------------.     ,-------------.
-    * |Esc  |f1| f2| f3| f4|  | f5| f6| f7| f8|   | f9|f10|f11|f12  |  |Prnt|ScLk|Paus|
-    * |-------------------------------------------------------------|  |--------------|
-    * |FN3 |BL0|BL1|BL2|BL3|   |   |   |   |  |   |BL-|BL+|BL Togl|    |RGB Tog |Val+|
-    * |-----------------------------------------------------------|    |-------------|
-    * |Debug|   |   |   |   |   |   |   |   |   |   |   |   | RST |    |RGB Mode|Val-|
-    * |--------------------------------------------------------.  |    `-------------'
-    * |LayrClr|Hz+|MS+|   |   |   |   |   |   |   |   |   |    |  |
-    * |-----------------------------------------------------------|  ,----.
-    * |ClickTgl|Hz-|MS-|   |   |   |   |   |   |   |   |Layer Clr |  |Hue+|
-    * |------------------------------------------------------------------------.
-    * |    |    |    |                             |    |    |  |  |Sat-|Hue-|Sat+|
-    * `------------------------------------------------------'  `--------------'
-    */
 [SETTINGS] = LAYOUT_iso(
   KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, BL_DEC,            KC_NO,   KC_NO,   KC_NO,
   KC_FN0,KC_FN3,KC_FN4,KC_FN5, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, BL_DEC, BL_INC, BL_TOGG,  RGB_TOG, RGB_VAI, KC_NO,
@@ -212,6 +168,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,KC_PSCR,_______,_______,_______,_______,LSFT(KC_LEFT),LSFT(KC_DOWN),LSFT(KC_UP), LSFT(KC_RGHT) ,LCTL(KC_ENT),DE_EQL ,        _______,                            \
     _______,_______,_______,_______,_______,_______,LCTL(LSFT(KC_ESC)),LCTL(LALT(KC_END)),_______,_______,_______,_______,        _______,           _______,         \
     _______,_______,_______,        _______,       KC_DEL,      _______,          _______,_______,_______  ,_______,   _______,_______,_______),
+
+[GAMING] = LAYOUT( \
+		KC_ESC,             KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,   KC_PSCR,KC_SLCK,KC_PAUS, \
+		KC_GRV,  KC_1,      KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS,KC_EQL, KC_BSPC,  KC_INS, KC_HOME,KC_PGUP, \
+		KC_TAB,  KC_Q,      KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC,KC_RBRC,KC_BSLS,  KC_DEL, KC_END, KC_PGDN, \
+		KC_CAPSLOCK, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,KC_ENT,              \
+		KC_LSPO, KC_NUBS,   KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,KC_COMM,KC_DOT, KC_SLSH,        KC_RSPC,          KC_UP,              \
+		KC_LCTL, KC_LGUI,   KC_LALT,          KC_SPC,KC_SPC,KC_SPC,                     KC_RALT,_______,_______,_______,   KC_LEFT,KC_DOWN,KC_RGHT),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
