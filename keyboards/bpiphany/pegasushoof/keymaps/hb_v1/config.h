@@ -7,6 +7,6 @@
 #define RSPC_KEY KC_9
 #define DISABLE_SPACE_CADET_ROLLOVER
 /*for Tap Dance: */
-#define TAPPING_TERM 150
+#define TAPPING_TERM 210
 
 #endif
