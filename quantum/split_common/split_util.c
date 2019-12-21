@@ -32,6 +32,14 @@ bool waitForUsb(void) {
         }
         wait_ms(100);
     }
+
+    // Avoid NO_USB_STARTUP_CHECK - Disable USB as the previous checks seem to enable it somehow
+#if defined(__AVR__)
+    (USBCON &= ~(_BV(USBE) | _BV(OTGPADE)));
+#else
+    usbStop(&USBD1);
+#endif
+
     return false;
 }
 
@@ -70,7 +78,7 @@ __attribute__((weak)) bool is_keyboard_master(void) {
 }
 
 static void keyboard_master_setup(void) {
-#if defined(USE_I2C) || defined(EH)
+#if defined(USE_I2C)
 #    ifdef SSD1306OLED
     matrix_master_OLED_init();
 #    endif
