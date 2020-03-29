@@ -15,7 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "pegasushoof.h"
+#include QMK_KEYBOARD_H
+/*#include "pegasushoof.h"*/
 #include "action_layer.h"
 #include "../../../../../quantum/keymap_extras/keymap_german.h"
 
