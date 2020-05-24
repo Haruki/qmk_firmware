@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ K* You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_HOME, OPT_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
                  KC_END, LT(1,KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, LT(2,KC_SCLN), KC_QUOTE, CTL_T(KC_ENTER),
                  KC_PGUP, KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_DOT, KC_SLSH, KC_RSPC, MO(1),
-                 KC_PGDN, KC_LGUI, KC_LALT, KC_LALT, LT(3,KC_DEL), KC_SPACE, KC_RGUI, KC_RCTL, MO(2)),
+                 KC_PGDN, KC_LGUI, KC_LALT, KC_LALT, LT(3,KC_DEL), KC_SPACE, LT(4,KC_PIPE), KC_RCTL, MO(2)),
 
     [1] = LAYOUT_split(
         _______, _______, LSFT(KC_1),LSFT(KC_2),LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),LSFT(KC_6),LSFT(KC_7),LSFT(KC_8),LSFT(KC_9),LSFT(KC_0), LSFT(KC_MINS), LSFT(KC_EQL), LSFT(KC_NO),
@@ -41,5 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [3] = LAYOUT_split(
         _______, _______, LSFT(KC_1),LSFT(KC_2),LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),LSFT(KC_6),KC_7,KC_8,KC_9,LSFT(KC_0), LSFT(KC_MINS), LSFT(KC_EQL), LSFT(KC_NO),
         _______, _______, DE_LESS,DE_MORE,DE_LCBR,DE_RCBR,DE_LBRC,DE_RBRC,KC_4,KC_5,KC_6  , KC_LEFT, KC_RIGHT, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DOWN, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, RESET, _______)};
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_1, KC_2, KC_3, KC_DOWN, _______, _______,
+        _______, _______, _______, _______, _______, KC_0, _______, RESET, _______),
+    [4] = LAYOUT_split(
+        _______, _______, LSFT(KC_1),LSFT(KC_2),LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),LSFT(KC_6),DE_UDIA,KC_8,KC_9,DE_UDIA, LSFT(KC_MINS), LSFT(KC_EQL), LSFT(KC_NO),
+        _______, _______, DE_ADIA,DE_MORE,DE_LCBR,DE_RCBR,DE_LBRC,DE_RBRC,KC_4,KC_5,KC_6  , KC_LEFT, KC_RIGHT, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_1, KC_2, KC_3, KC_DOWN, _______, _______,
+        _______, _______, _______, _______, _______, KC_0, _______, RESET, _______)};
