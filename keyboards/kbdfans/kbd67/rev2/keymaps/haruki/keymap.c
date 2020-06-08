@@ -16,27 +16,68 @@
 #include QMK_KEYBOARD_H
 #include "../../../../quantum/keymap_extras/keymap_german.h"
 
+#define MODS_CTRL_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
+
+#define _______ KC_TRNS
+
+
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
-  QMKBEST = SAFE_RANGE,
-  QMKURL
-};
+  QMKBEST = SAFE_RANGE, QMKURL };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
 [0] = LAYOUT_all(
   KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL, KC_NO, KC_BSPC, KC_HOME, \
   KC_TAB,  KC_Q,    KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP, \
-  KC_CAPS, KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT, KC_PGDN,  \
-  KC_LSFT, KC_NUBS, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,           \
-  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_SPC,                          KC_RALT, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+  LT(2,KC_ESC), LT(4,KC_A),   LT(5,KC_S),   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,   LT(3,KC_SCLN), KC_QUOT,         CTL_T(KC_ENT), KC_PGDN,  \
+  KC_LSPO, KC_NUBS, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, KC_UP,   KC_END,           \
+  KC_LCTL, KC_LGUI, KC_LALT, LT(5,KC_INS),    LT(6, KC_DEL), KC_SPC,                          KC_RALT, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
 
 [1] = LAYOUT_all(
   KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL, KC_NO, KC_BSPC, KC_HOME, \
   KC_TAB,  KC_Q,    KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP, \
-  KC_CAPS, KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT, KC_PGDN,  \
+  _______, KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT, KC_PGDN,  \
   KC_LSFT, KC_NUBS, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,           \
   KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_SPC,                          RESET, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+
+[2] = LAYOUT_all(
+  KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_BSPC, KC_HOME, \
+  _______,LSFT(KC_1),LSFT(KC_2),LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),LSFT(KC_6),LSFT(KC_7),LSFT(KC_8),LSFT(KC_9),LSFT(KC_0), LSFT(KC_MINS), LSFT(KC_EQL), LSFT(KC_NO), KC_PGUP, \
+  _______,_______,_______,_______,_______,_______,KC_LEFT,KC_DOWN,KC_UP, KC_RGHT ,KC_BSPC,DE_EQL ,        TG(1), KC_PGDN,  \
+  KC_LSFT, KC_NUBS, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,           \
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_SPC,                          RESET, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+
+[3] = LAYOUT_all(
+  KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_BSPC, KC_HOME, \
+  _______,LSFT(KC_1),LSFT(KC_2),LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),LSFT(KC_6),LSFT(KC_7),LSFT(KC_8),LSFT(KC_8),LSFT(KC_0), LSFT(KC_MINS), LSFT(KC_EQL), LSFT(KC_NO), KC_PGUP, \
+  _______,DE_LESS,DE_MORE,DE_LCBR,DE_RCBR,DE_LBRC,DE_RBRC,KC_HOME,KC_END,KC_DEL  ,    KC_SCLN, KC_QUOT,          KC_ENT, KC_PGDN,  \
+  _______,_______,_______,_______,_______,_______,_______,DE_GRV,DE_QUOT,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,           \
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_SPC,                          RESET, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+
+[4] = LAYOUT_all(
+  KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL, KC_NO, KC_BSPC, KC_HOME, \
+  KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_F7, KC_F8, KC_F9, KC_F10,    KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP, \
+  _______, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_F4, KC_F5, KC_F6, KC_F11, KC_QUOT,          KC_ENT, KC_PGDN,  \
+  KC_LSFT, KC_NUBS, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_F1, KC_F2, KC_F3, KC_F12, KC_RSFT, KC_UP,   KC_END,           \
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_SPC,                          RESET, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+
+[5] = LAYOUT_all(  //numbers
+  KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL, KC_NO, KC_BSPC, KC_HOME, \
+  KC_TRNS, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, KC_7, KC_8, KC_9, KC_0,    KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_4, KC_5, KC_6,    KC_SCLN, KC_QUOT,          KC_ENT, KC_PGDN,  \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_DEC, BL_TOGG, BL_INC, BL_STEP, KC_1, KC_2, KC_3,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,           \
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_0,                          RESET, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+
+[6] = LAYOUT_all(  //volume
+  KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL, KC_NO, KC_BSPC, KC_HOME, \
+  KC_TRNS, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, KC_7, KC_8, KC_9, KC_0,    KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU,    KC_SCLN, KC_QUOT,          KC_ENT, KC_PGDN,  \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_DEC, BL_TOGG, BL_INC, BL_STEP, KC_1, KC_2, KC_3,  KC_SLSH, KC_RSFT, KC_UP,   KC_END,           \
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,     KC_SPC, KC_0,                          RESET, KC_NO, MO(1), KC_LEFT, KC_DOWN, KC_RGHT),
+
+
 
 };
 
